@@ -1,0 +1,30 @@
+package com.security.library.entities.dto;
+
+import java.time.LocalDate;
+
+import com.employee.service.entities.Address;
+import com.employee.service.entities.Role;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToOne;
+
+public class EmployeeDto {
+
+	private Integer employeeId;
+	private String firstName;
+	private String lastName;
+
+	private String email;
+	
+	
+	private String password;
+	
+	private String mobileNumber;
+	private LocalDate dateOfBirth;
+
+	private Role role;
+
+	private Address address;
+}

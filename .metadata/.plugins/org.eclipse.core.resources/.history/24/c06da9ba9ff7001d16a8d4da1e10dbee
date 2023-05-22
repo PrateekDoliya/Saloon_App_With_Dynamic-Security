@@ -1,0 +1,11 @@
+package com.employee.service.exception;
+
+public class ResourceNotFoundException {
+
+	String resourceName;
+	String fieldName;
+	String fieldvalue;
+	
+	
+	
+}

@@ -1,0 +1,10 @@
+package com.security.library.jwt.util;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class JwtTokenUtil {
+
+	
+	
+}

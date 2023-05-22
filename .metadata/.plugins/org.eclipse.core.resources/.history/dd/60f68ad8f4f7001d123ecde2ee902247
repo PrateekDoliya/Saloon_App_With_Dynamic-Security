@@ -1,0 +1,5 @@
+package com.auth.service.services.impl;
+
+public class AuthenticationServiceImpl {
+
+}

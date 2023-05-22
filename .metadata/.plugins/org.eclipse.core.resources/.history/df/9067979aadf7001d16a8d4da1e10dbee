@@ -1,0 +1,21 @@
+package com.security.library.responseDto;
+
+import com.employee.service.responseDto.CommonResponseDto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
+public class CommonResponse {
+
+	private String message;
+	private Boolean success;
+	private Integer statusCode;
+	private Object data;
+	
+}

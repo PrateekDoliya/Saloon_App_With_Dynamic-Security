@@ -1,0 +1,11 @@
+package com.security.library.responseDto;
+
+
+public class CommonResponse {
+
+	private String message;
+	private Boolean success;
+	private Integer statusCode;
+	private Object data;
+	
+}

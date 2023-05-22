@@ -1,0 +1,19 @@
+package com.employee.service.services;
+
+import com.employee.service.requestDto.EmployeeRequestDto;
+
+public interface EmployeeService {
+
+	// CREATE
+	T createEmployee(EmployeeRequestDto employeeRequestDto);
+	
+	// GET ALL
+	T getAllEmployees();
+	
+	// GET BY ID
+	T getEmployeeById(Integer employeeId);
+	
+	// GET BY EMAIL
+	T getEmployeeByEmail(String email);
+	
+}

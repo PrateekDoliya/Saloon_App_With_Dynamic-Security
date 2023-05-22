@@ -1,0 +1,5 @@
+package com.security.library.responseDto;
+
+public class CommonResponse {
+
+}

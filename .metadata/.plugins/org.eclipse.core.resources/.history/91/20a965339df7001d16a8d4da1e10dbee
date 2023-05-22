@@ -1,0 +1,14 @@
+package com.employee.service.services;
+
+public interface EmployeeService {
+
+	// CREATE
+	
+	
+	// GET ALL
+	
+	// GET BY ID
+	
+	// GET BY EMAIL
+	
+}

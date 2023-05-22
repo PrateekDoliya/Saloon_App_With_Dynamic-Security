@@ -1,0 +1,5 @@
+package com.auth.service.requestDto;
+
+public class LoginRequest {
+
+}

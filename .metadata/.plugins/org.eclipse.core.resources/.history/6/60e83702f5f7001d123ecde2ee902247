@@ -1,0 +1,14 @@
+package com.auth.service.services.impl;
+
+import com.auth.service.requestDto.LoginRequest;
+import com.auth.service.services.AuthenticationService;
+
+public class AuthenticationServiceImpl<T> implements AuthenticationService<T> {
+
+	@Override
+	public T doLogin(LoginRequest loginRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

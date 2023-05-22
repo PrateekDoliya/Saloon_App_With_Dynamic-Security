@@ -1,0 +1,47 @@
+package com.security.library.jwt;
+
+import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.security.library.jw.util.JwtTokenUtil;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
+
+@Component
+@Slf4j
+public class JwtRequestFilter  extends OncePerRequestFilter{
+
+	@Autowired
+	private JwtTokenUtil jwtTokenUtil;
+	
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		
+		log.info("JwtRequestFilter Called");
+
+		String requestTokenHeader = request.getHeader("Authorization");
+		String username = null;
+		String jwtToken = null;
+		if(requestTokenHeader != null && requestTokenHeader.startsWith("Bearer")) {
+			log.info("inside requestTokenHeader");
+			jwtToken = requestTokenHeader.substring(7);
+			try {
+				username = this.jwtTokenUtil.extractUsername(jwtToken);
+
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		
+	}
+
+	
+}

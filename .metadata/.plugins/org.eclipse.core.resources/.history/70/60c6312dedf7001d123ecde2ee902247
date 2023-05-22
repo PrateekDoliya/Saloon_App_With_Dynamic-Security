@@ -1,0 +1,5 @@
+package com.security.library;
+
+public interface EmployeeRepository {
+
+}

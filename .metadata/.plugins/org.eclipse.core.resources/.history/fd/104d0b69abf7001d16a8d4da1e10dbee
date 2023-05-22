@@ -1,0 +1,17 @@
+package com.security.library.entities.dto;
+
+import java.time.LocalDate;
+
+@All
+public class EmployeeDto {
+
+	private Integer employeeId;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String password;
+	private String mobileNumber;
+	private LocalDate dateOfBirth;
+	private RoleDto role;
+	private AddressDto address;
+}

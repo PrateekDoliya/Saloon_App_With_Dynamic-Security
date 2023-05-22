@@ -1,0 +1,14 @@
+package com.security.library.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.security.library.entitiesDto.EmployeeDto;
+
+public interface EmployeeDtoRepository extends JpaRepository<EmployeeDto, Integer> {
+
+	@Query(value="from employee_service_saloon_app.EmployeeDto where email=:email")
+	Optional<EmployeeDto> findByEmail(String email);
+}

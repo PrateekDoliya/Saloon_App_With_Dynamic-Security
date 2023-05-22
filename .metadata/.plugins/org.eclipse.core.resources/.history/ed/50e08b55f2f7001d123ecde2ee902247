@@ -1,0 +1,12 @@
+package com.security.library.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.security.library.entitiesDto.EmployeeDto;
+
+public interface EmployeeRepository extends JpaRepository<EmployeeDto, Integer> {
+
+	Optional<EmployeeDto> findByEmail(String email);
+}

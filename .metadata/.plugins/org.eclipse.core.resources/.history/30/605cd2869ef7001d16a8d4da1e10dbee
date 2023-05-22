@@ -1,0 +1,21 @@
+package com.employee.service.responseDto;
+
+import org.springframework.http.HttpStatus;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
+public class CommonResponseDto<T> {
+
+	private String message;
+	private Boolean success;
+	private HttpStatus statusCodeHttp;
+	private T data;
+	
+}

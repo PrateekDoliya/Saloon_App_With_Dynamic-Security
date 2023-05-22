@@ -1,0 +1,49 @@
+package com.employee.service.services.impl;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+
+import com.employee.service.entities.Employee;
+import com.employee.service.repository.EmployeeRepository;
+import com.employee.service.requestDto.EmployeeRequestDto;
+import com.employee.service.responseDto.CommonResponseDto;
+import com.employee.service.responseDto.EmployeeResponseDto;
+import com.employee.service.services.EmployeeService;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private ModelMapper mapper;
+
+	@Override
+	public CommonResponseDto<EmployeeResponseDto> createEmployee(EmployeeRequestDto employeeRequestDto) {
+		
+	}
+
+	@Override
+	public CommonResponseDto<EmployeeResponseDto> getAllEmployees() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CommonResponseDto<EmployeeResponseDto> getEmployeeById(Integer employeeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CommonResponseDto<EmployeeResponseDto> getEmployeeByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+}

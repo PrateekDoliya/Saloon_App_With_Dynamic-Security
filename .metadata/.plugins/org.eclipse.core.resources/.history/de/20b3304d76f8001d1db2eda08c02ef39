@@ -1,0 +1,66 @@
+package com.employee.service.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.employee.service.requestDto.EmployeeRequestDto;
+import com.employee.service.responseDto.CommonResponseDto;
+import com.employee.service.responseDto.EmployeeResponseDto;
+import com.employee.service.services.EmployeeService;
+
+@RestController
+@RequestMapping("/api/v1/employee")
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService employeeService;
+	
+	// CREATE
+	@PostMapping("/create")
+	public ResponseEntity<CommonResponseDto> createEmployee(@RequestBody EmployeeRequestDto employeeRequestDto) {
+		EmployeeResponseDto createEmployee = this.employeeService.createEmployee(employeeRequestDto);
+		return ResponseEntity
+				.status(HttpStatus.CREATED)
+				.body(CommonResponseDto.builder().message("Employee created successfully!!").success(true).statusCode(HttpStatus.CREATED.value()).data(createEmployee).build());
+	}
+	
+	// GET ALL EMPLOYEES
+	@GetMapping("/get-all")
+	public ResponseEntity<CommonResponseDto> getAllEmployees() {
+		List<EmployeeResponseDto> allEmployees = this.employeeService.getAllEmployees();
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(CommonResponseDto.builder().message("Employee fetched successfully!!").success(true).statusCode(HttpStatus.OK.value()).data(allEmployees).build());
+	}
+	
+	// GET BY ID
+	@PreAuthorize("hasAuthority('EMPLOYEE') and hasAuthority('READ')")
+	@GetMapping("/get/id/{employeeId}")
+	public ResponseEntity<CommonResponseDto> getEmployeeById(@PathVariable Integer employeeId) {
+		EmployeeResponseDto employeeById = this.employeeService.getEmployeeById(employeeId);
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(CommonResponseDto.builder().message("Employee fetched successfully!!").success(true).statusCode(HttpStatus.OK.value()).data(employeeById).build());
+	}
+	
+	// GET BY EMAIL
+	@PreAuthorize("hasAuthority('Create')")
+	@GetMapping("/get/email/{employeeEmail}")
+	public ResponseEntity<CommonResponseDto> getEmployeeByEmail(@PathVariable String employeeEmail) {
+		EmployeeResponseDto employeeByEmail = this.employeeService.getEmployeeByEmail(employeeEmail);
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body(CommonResponseDto.builder().message("Employee fetched successfully!!").success(true).statusCode(HttpStatus.OK.value()).data(employeeByEmail).build());
+	}
+	
+}

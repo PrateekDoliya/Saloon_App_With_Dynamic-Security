@@ -1,0 +1,10 @@
+package com.security.library.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.security.library.entities.dto.EmployeeDto;
+
+public interface EmployeeRepository extends JpaRepository<EmployeeDto, Integer> {
+
+	
+}

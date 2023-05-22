@@ -1,0 +1,35 @@
+package com.security.library.configs;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+@EnableMethodSecurity
+@EnableWebSecurity
+public class SpringSecurityConfig {
+
+	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+		
+		httpSecurity
+		.cors().disable()
+		.csrf().disable()
+		.authorizeHttpRequests()
+		.requestMatchers("/api/v1/employee/get-all").permitAll()
+		.requestMatchers("/api/v1/employee/save").permitAll()
+		.requestMatchers("/api/v1/authenticate/signin").permitAll()
+		.anyRequest()
+		.authenticated().and()
+		.exceptionHandling()
+//		.authenticationEntryPoint(authenticationEntryPoint).and()
+//		.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+		
+		return httpSecurity.build();
+	}
+	
+}

@@ -1,0 +1,5 @@
+package com.auth.service.entities.responseDto;
+
+public class LoginResponse {
+
+}

@@ -1,0 +1,11 @@
+package com.security.library.entities.dto;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class RoleDto {
+
+	private Integer roleId;
+	private String roleName;
+	private Set<String> authorities = new HashSet<>();
+}

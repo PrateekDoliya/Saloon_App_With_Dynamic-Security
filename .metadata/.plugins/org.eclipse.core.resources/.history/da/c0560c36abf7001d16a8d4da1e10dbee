@@ -1,0 +1,5 @@
+package com.security.library.entities.dto;
+
+public class RoleDto {
+
+}

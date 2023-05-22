@@ -1,0 +1,31 @@
+package com.security.library.entitiesDto;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity
+public class EmployeeDto {
+
+	private Integer employeeId;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String password;
+	private String mobileNumber;
+	private LocalDate dateOfBirth;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private RoleDto role;
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private AddressDto address;
+}

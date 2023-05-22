@@ -1,0 +1,44 @@
+package com.employee.service.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.employee.service.repository.EmployeeRepository;
+import com.employee.service.requestDto.EmployeeRequestDto;
+import com.employee.service.responseDto.CommonResponseDto;
+import com.employee.service.responseDto.EmployeeResponseDto;
+import com.employee.service.services.EmployeeService;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService<CommonResponseDto<EmployeeResponseDto>> {
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+
+	@Override
+	public CommonResponseDto<EmployeeResponseDto> createEmployee(EmployeeRequestDto employeeRequestDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CommonResponseDto<EmployeeResponseDto> getAllEmployees() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CommonResponseDto<EmployeeResponseDto> getEmployeeById(Integer employeeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CommonResponseDto<EmployeeResponseDto> getEmployeeByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+}

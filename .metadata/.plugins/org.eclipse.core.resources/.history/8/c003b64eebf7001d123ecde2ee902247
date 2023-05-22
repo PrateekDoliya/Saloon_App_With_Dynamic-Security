@@ -1,0 +1,36 @@
+package com.security.library.jwt;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.security.library.entities.dto.EmployeeDto;
+import com.security.library.repository.EmployeeRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Service
+@Slf4j
+public class JwtUserDetailsServiceImpl implements UserDetailsService {
+
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//		Optional<EmployeeDto> optional = this.employeeRepository.findByEmail(username);
+//		if(optional.isEmpty()) {
+//			throw new Exception("Employee Not Found with email_id : "+ username);
+//		}
+//		
+//		log.info("JwtUserDetailsServiceImpl::USER:{}", optional);
+//		return optional.get();
+		return null;
+		
+	}
+
+}
