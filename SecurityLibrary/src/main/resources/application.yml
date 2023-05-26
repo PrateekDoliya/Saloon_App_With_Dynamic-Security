@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/employee_service_saloon_app
+    username: root
+    password: tiger
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+jwt:
+  secret: springSecurity
+  jwtExpirationInMs: 600000
+#  jwtExpirationInMs: 600000

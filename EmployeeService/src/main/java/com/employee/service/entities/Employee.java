@@ -1,0 +1,40 @@
+package com.employee.service.entities;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Employee {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer employeeId;
+	private String firstName;
+	private String lastName;
+	@Column(unique = true, nullable = false )
+	private String email;
+	
+	@Column(unique = true, nullable = false)
+	private String password;
+	
+	private String mobileNumber;
+	private LocalDate dateOfBirth;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Role role;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Address address;
+}
