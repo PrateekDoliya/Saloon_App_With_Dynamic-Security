@@ -5,18 +5,17 @@ import java.util.Set;
 
 import com.employee.service.entities.RolePermission;
 
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class RoleRequestDto {
+public class PermissionRequestDto {
 
-	private Integer roleId;
-	private String roleName;
-	private Set<RolePermissionRequestDto> rolePermission = new HashSet<>();
+	private Integer permissionId;
+	private String permission;
+	private Set<RolePermissionRequestDto> rolePermissions = new HashSet<>();
 	
 }

@@ -1,4 +1,4 @@
-package com.auth.service.entities;
+package com.security.library.entitiesDto;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,25 +10,25 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-public class Role {
+@Data
+@Entity
+@Table(name = "permission")
+public class PermissionDto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer roleId;
-	private String roleName;
+	private Integer permissionId;
+	private String permission;
 	@JsonIgnore
-	@OneToMany(mappedBy = "role")
-	private Set<RolePermission> rolePermissions = new HashSet<>();
-	
+//	@OneToMany(mappedBy = "permission")
+	@Transient
+	private Set<RolePermissionDto> rolePermissions = new HashSet<>();
 }

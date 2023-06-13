@@ -11,13 +11,14 @@ import lombok.NoArgsConstructor;
 @Data
 public class EmployeeRequestDto {
 
+	private Integer employeeId;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String password;
 	private String mobileNumber;
 	private LocalDate dateOfBirth;
-	private RoleRequestDto role;
+	private Integer roleId;
 	private AddressRequestDto address;
 	
 }

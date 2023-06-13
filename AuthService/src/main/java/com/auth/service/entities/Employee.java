@@ -19,12 +19,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class Employee implements UserDetails{
 
 	@Id
@@ -47,9 +50,15 @@ public class Employee implements UserDetails{
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<SimpleGrantedAuthority> authorities = role.getAuthorities().stream().map( SimpleGrantedAuthority :: new).collect(Collectors.toSet());
+
+		Set<SimpleGrantedAuthority> authorities = 
+				role.getRolePermissions().stream().map( (permission) -> new SimpleGrantedAuthority(permission.getPermission().getPermission())).collect(Collectors.toSet());
 		authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
 		return authorities;
+		
+//		Set<SimpleGrantedAuthority> authorities = role.getRolePermissions().stream().map( SimpleGrantedAuthority :: new).collect(Collectors.toSet());
+//		authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+//		return authorities;
 	}
 	@Override
 	public String getUsername() {

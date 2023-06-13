@@ -15,20 +15,18 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Role {
+@Entity
+public class Permission {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer roleId;
-	private String roleName;
+	private Integer permissionId;
+	private String permission;
 	@JsonIgnore
-	@OneToMany(mappedBy = "role")
+	@OneToMany(mappedBy = "permission")
 	private Set<RolePermission> rolePermissions = new HashSet<>();
-	
 }

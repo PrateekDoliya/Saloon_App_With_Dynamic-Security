@@ -1,6 +1,7 @@
 package com.auth.service.services.impl;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.auth.service.entities.Employee;
+import com.auth.service.entities.RolePermission;
 import com.auth.service.entities.responseDto.LoginResponse;
 import com.auth.service.repository.EmployeeRepository;
+import com.auth.service.repository.RolePermissionRepository;
 import com.auth.service.requestDto.LoginRequest;
 import com.auth.service.services.AuthenticationService;
 import com.security.library.jwt.util.JwtTokenUtil;
@@ -33,6 +36,8 @@ public class AuthenticationServiceImpl<T> implements AuthenticationService<T> {
 //	@Autowired
 //	private AuthenticationManager authenticationManager;
 //	
+	@Autowired
+	private RolePermissionRepository rolePermissionRepository;
 	private Logger logger = LoggerFactory.getLogger(AuthenticationServiceImpl.class);
 	
 	@Override
@@ -43,6 +48,8 @@ public class AuthenticationServiceImpl<T> implements AuthenticationService<T> {
 		}
 		
 		Employee employe = this.employeeRepository.findByEmail(loginRequest.getEmail());
+		Set<RolePermission> employeeRolePermissions = this.rolePermissionRepository.findByEmployeeId(employe.getEmployeeId());
+		employe.getRole().setRolePermissions(employeeRolePermissions);
 		logger.info("LoginService : Login Employee : {}", employe);
 		
 		if(employe == null) {
@@ -62,7 +69,7 @@ public class AuthenticationServiceImpl<T> implements AuthenticationService<T> {
 		
 		logger.info("LoginService : Password matched !!");
 //		UserDetails userDetails= new org.springframework.security.core.userdetails.User(loginRequest.getEmail(), loginRequest.getPassword(), true, true, true, true, employe.getRole().getAuthorities());
-		
+		logger.info("EMPLOYEE::{}", employe);
 		String token = this.jwtTokenUtil.generateToken(employe);
 		logger.info("LoginService : login Success : {}", employe);
 		

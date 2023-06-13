@@ -27,9 +27,10 @@ public class EmployeeController {
 	
 	// CREATE
 	@PostMapping("/create")
-	@PreAuthorize("hasAuthority('CREATE')")
+	@PreAuthorize("hasAuthority('ADMIN_CREATE_EMPLOYEE') and hasAuthority('ROLE_ADMIN') ")
 	public ResponseEntity<CommonResponseDto> createEmployee(@RequestBody EmployeeRequestDto employeeRequestDto) {
 		EmployeeResponseDto createEmployee = this.employeeService.createEmployee(employeeRequestDto);
+		
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
 				.body(CommonResponseDto.builder().message("Employee created successfully!!").success(true).statusCode(HttpStatus.CREATED.value()).data(createEmployee).build());
@@ -37,7 +38,7 @@ public class EmployeeController {
 	
 	// GET ALL EMPLOYEES
 	@GetMapping("/get-all")
-//	@PreAuthorize("hasAuthority('READ')")
+	@PreAuthorize("hasAuthority('ADMIN_READ_EMPLOYEE')")
 	public ResponseEntity<CommonResponseDto> getAllEmployees() {
 		List<EmployeeResponseDto> allEmployees = this.employeeService.getAllEmployees();
 		return ResponseEntity
@@ -46,7 +47,7 @@ public class EmployeeController {
 	}
 	
 	// GET BY ID
-//	@PreAuthorize("hasAuthority('READ')")
+	@PreAuthorize("hasAuthority('ADMIN_READ_EMPLOYEE')")
 	@GetMapping("/get/id/{employeeId}")
 	public ResponseEntity<CommonResponseDto> getEmployeeById(@PathVariable Integer employeeId) {
 		EmployeeResponseDto employeeById = this.employeeService.getEmployeeById(employeeId);
@@ -56,7 +57,7 @@ public class EmployeeController {
 	}
 	
 	// GET BY EMAIL
-	@PreAuthorize("hasAuthority('READ')")
+	@PreAuthorize("hasAuthority('ADMIN_READ_EMPLOYEE')")
 	@GetMapping("/get/email/{employeeEmail}")
 	public ResponseEntity<CommonResponseDto> getEmployeeByEmail(@PathVariable String employeeEmail) {
 		EmployeeResponseDto employeeByEmail = this.employeeService.getEmployeeByEmail(employeeEmail);

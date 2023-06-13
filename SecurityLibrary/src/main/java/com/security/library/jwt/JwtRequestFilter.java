@@ -74,6 +74,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
 				log.info("JWTREUESTFILTER:: AUTHORITIES"+ userDetails.getAuthorities());
 				
+				
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());
 //				logger.info("usernamePasswordAuthenticationToken:"+usernamePasswordAuthenticationToken);

@@ -9,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.employee.service.entities.Employee;
+import com.employee.service.entities.Role;
+import com.employee.service.entities.RolePermission;
 import com.employee.service.exception.ResourceNotFoundException;
 import com.employee.service.repository.EmployeeRepository;
+import com.employee.service.repository.RolePermissionRepository;
+import com.employee.service.repository.RoleRepository;
 import com.employee.service.requestDto.EmployeeRequestDto;
 import com.employee.service.responseDto.EmployeeResponseDto;
 import com.employee.service.services.EmployeeService;
@@ -22,22 +26,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private EmployeeRepository employeeRepository;
 	
 	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private RolePermissionRepository rolePermissionRepository;
+	
+	@Autowired
 	private ModelMapper mapper;
 
 	@Override
 	public EmployeeResponseDto createEmployee(EmployeeRequestDto employeeRequestDto) {
+		
+		Role role = this.roleRepository.findById(employeeRequestDto.getRoleId()).orElseThrow(() -> new ResourceNotFoundException("Role", "role_id", employeeRequestDto.getRoleId()));
 		Employee employee = this.mapper.map(employeeRequestDto, Employee.class);
-		
-		employee.getRole().setRoleName("ROLE_"+employee.getRole().getRoleName().toUpperCase());
-		
-		Set<String> authorities = employee.getRole().getAuthorities();
-		employee
-		.getRole()
-		.setAuthorities(
-				authorities.stream().map( 
-						(authority) -> authority.toUpperCase() 
-				).collect(Collectors.toSet()));
-		
+		employee.setRole(role);
 		Employee savedEmployee = this.employeeRepository.save(employee);
 		return this.mapper.map(savedEmployee, EmployeeResponseDto.class);
 	}
@@ -51,6 +53,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public EmployeeResponseDto getEmployeeById(Integer employeeId) {
 		Employee employee = this.employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException("Employee", "employee_id", employeeId));
+		Set<RolePermission> employeeRolePermissions = this.rolePermissionRepository.findByEmployeeId(employeeId);
+		employee.getRole().setRolePermissions(employeeRolePermissions);
 		return this.mapper.map(employee, EmployeeResponseDto.class);
 	}
 

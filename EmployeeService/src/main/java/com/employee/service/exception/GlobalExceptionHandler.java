@@ -1,5 +1,7 @@
 package com.employee.service.exception;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 import org.hibernate.PropertyValueException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,13 @@ public class GlobalExceptionHandler {
 		return ResponseEntity
 				.status(HttpStatus.INTERNAL_SERVER_ERROR)
 				.body(CommonResponseDto.builder().message(exception.getMessage()).statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value()).success(false).build());
+	}
+	
+	@ExceptionHandler(java.sql.SQLIntegrityConstraintViolationException.class)
+	public ResponseEntity<CommonResponseDto> handelSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException exception) {
+		return ResponseEntity
+				.status(HttpStatus.BAD_REQUEST)
+				.body(CommonResponseDto.builder().message(exception.getMessage()).statusCode(HttpStatus.BAD_REQUEST.value()).success(false).build());
 	}
 	
 }
