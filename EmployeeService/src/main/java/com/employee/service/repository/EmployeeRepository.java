@@ -9,7 +9,7 @@ import com.employee.service.entities.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-	@Query(nativeQuery = true, value = "select * from employee_service_saloon_app.employee where email=:email")
+	@Query(nativeQuery = true, value = "select * from maikhane_employee_service_saloon_app.employee where email=:email")
 	Employee getByEmail(String email);
 	
 }

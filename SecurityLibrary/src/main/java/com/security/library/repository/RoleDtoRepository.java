@@ -7,7 +7,7 @@ import com.security.library.entitiesDto.RoleDto;
 
 public interface RoleDtoRepository extends JpaRepository<RoleDto, Integer> {
 
-	@Query(nativeQuery = true, value = "select * from employee_service_saloon_app.role r where r.role_id=:roleId")
+	@Query(nativeQuery = true, value = "select * from maikhane_employee_service_saloon_app.role r where r.role_id=:roleId")
 	RoleDto getRoleById(Integer roleId);
 	
 }
