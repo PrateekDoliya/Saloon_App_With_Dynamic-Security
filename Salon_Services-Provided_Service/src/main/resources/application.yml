@@ -5,7 +5,7 @@ spring:
   application:
     name: SERVICES-PROVIDED
   datasource:
-    url: jdbc:mysql://localhost:3306/provided_service_saloon_app
+    url: jdbc:mysql://localhost:3306/maikhane_provided_service_saloon_app
     username: root
     password: tiger
     driver-class-name: com.mysql.cj.jdbc.Driver

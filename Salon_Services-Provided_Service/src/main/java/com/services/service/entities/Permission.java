@@ -6,9 +6,10 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,14 +18,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class Role {
+public class Permission {
 
 	@Id
-	private Integer roleId;
-	private String roleName;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer permissionId;
+	private String permission;
 	@JsonIgnore
-	@OneToMany(mappedBy = "role")
+	@OneToMany(mappedBy = "permission")
 	private Set<RolePermission> rolePermissions = new HashSet<>();
-	
-	
 }

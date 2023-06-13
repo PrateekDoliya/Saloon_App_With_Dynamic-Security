@@ -29,7 +29,7 @@ public class ServicesController {
 
 	// CREATE
 	@PostMapping("/create")
-	@PreAuthorize("hasAuthority('ROLE_ADMIN') and hasAuthority('WRITE')")
+	@PreAuthorize("hasAuthority('ROLE_ADMIN') and hasAuthority('ADMIN_CREATE_SERVICE')")
 	public ResponseEntity<ApiResponse<ServiceResponseDto>> createServices(
 			@RequestBody ServiceRequestDto serviceRequestDto) {
 		ServiceResponseDto createService = this.servicesService.createService(serviceRequestDto);
@@ -38,7 +38,7 @@ public class ServicesController {
 	}
 
 	// UPDATE
-	@PreAuthorize("hasAuthority('UPDATE')")
+	@PreAuthorize("hasAuthority('ADMIN_UPDATE_SERVICE')")
 	@PutMapping("/update/{serviceId}")
 	public ResponseEntity<ApiResponse<ServiceResponseDto>> updateService(
 			@RequestBody ServiceRequestDto serviceRequestDto, @PathVariable Integer serviceId) {
@@ -48,7 +48,7 @@ public class ServicesController {
 	}
 
 	// DELETE
-	@PreAuthorize("hasAuthority('DELETE')")
+	@PreAuthorize("hasAuthority('ADMIN_DELETE_SERVICE')")
 	@DeleteMapping("/delete/{serviceId}")
 	public ResponseEntity<ApiResponse<ServiceResponseDto>> deleteService(@PathVariable Integer serviceId) {
 		ServiceResponseDto deleteService = this.servicesService.deleteService(serviceId);
@@ -58,7 +58,7 @@ public class ServicesController {
 
 	// GET ALL
 	@GetMapping("/get-all")
-	@PreAuthorize("hasAuthority('READ')")
+	@PreAuthorize("hasAuthority('READ_SERVICE')")
 	public ResponseEntity<ApiResponse<List<ServiceResponseDto>>> getAllServices() {
 		List<ServiceResponseDto> allServices = this.servicesService.getAllServices();
 		return ResponseEntity.status(HttpStatus.OK)
@@ -67,7 +67,7 @@ public class ServicesController {
 
 	// GET BY ID
 	@GetMapping("/get/{serviceId}")
-	@PreAuthorize("hasAuthority('READ')")
+	@PreAuthorize("hasAuthority('READ_SERVICE')")
 	public ResponseEntity<ApiResponse<ServiceResponseDto>> getServiceById(@PathVariable Integer serviceId) {
 		ServiceResponseDto serviceById = this.servicesService.getServiceById(serviceId);
 		return ResponseEntity.status(HttpStatus.OK)
@@ -76,7 +76,7 @@ public class ServicesController {
 
 	// GET BY NAME
 	@GetMapping("/get-all/by-name/{serviceName}")
-	@PreAuthorize("hasAuthority('READ')")
+	@PreAuthorize("hasAuthority('READ_SERVICE')")
 	public ResponseEntity<ApiResponse<List<ServiceResponseDto>>> getAllServicesByName(
 			@PathVariable String serviceName) {
 		List<ServiceResponseDto> serviceByName = this.servicesService.getServiceByName(serviceName);
@@ -86,7 +86,7 @@ public class ServicesController {
 
 	// GET BY EMPLOYEE ID
 	@GetMapping("/get-all/by-employee/{employeeId}")
-	@PreAuthorize("hasAuthority('READ')")
+	@PreAuthorize("hasAuthority('READ_SERVICE')")
 	public ResponseEntity<ApiResponse<List<ServiceResponseDto>>> getAllServicesByEmployeeId(
 			@PathVariable Integer employeeId) {
 		List<ServiceResponseDto> serviceByEmployee = this.servicesService.getByEmployeeId(employeeId);
