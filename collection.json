@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "fdc3ab20-1a8d-4590-b059-952bef2c99b9",
+		"name": "SALOON MAIKHANE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EMPLOYEE-SERVICE",
+			"item": [
+				{
+					"name": "GET ALL EMPLOYEES",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXJzaEBkZXYuaW4iLCJleHAiOjE2ODUwMTExNjQsImlhdCI6MTY4NTAxMDU2NH0.3VnAYhpoJaAJTP8V6ya-fE-0LHD438drlaYRttWynXY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/api/v1/employee/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE EMPLOYEE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYXJzaEBkZXYuaW4iLCJleHAiOjE2ODUwMTExNjQsImlhdCI6MTY4NTAxMDU2NH0.3VnAYhpoJaAJTP8V6ya-fE-0LHD438drlaYRttWynXY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"dev\",\r\n    \"lastName\":\"Jain\",\r\n    \"email\":\"dev@dev.in\",\r\n    \"password\":\"jay\",\r\n    \"mobileNumber\":\"123456789\",\r\n    \"dateOfBirth\":\"2002-11-02\",\r\n    \"roleId\":1,\r\n    \"address\": {\r\n        \"street\":\"street\",\r\n        \"city\":\"Indore\",\r\n        \"state\":\"MP\",\r\n        \"country\":\"India\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/api/v1/employee/create"
+					},
+					"response": []
+				},
+				{
+					"name": "GET EMPLOYEE BY ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0ZWVrQGRldi5pbiIsImV4cCI6MTY4NDg1MDEwMiwiaWF0IjoxNjg0ODQ5NTAyfQ.-uTQwU6EjNzImGUJM8oY_Ao5MxSEJkMVYDfgMMV7NvM"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/api/v1/employee/get/id/2"
+					},
+					"response": []
+				},
+				{
+					"name": "GET EMPLOYEE BY EMAIL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0ZWVrQGRldi5pbiIsImV4cCI6MTY4NDkwODA4NSwiaWF0IjoxNjg0OTA3NDg1fQ.a3NkresCVl2pTyR7fEk3G4oe3_hMYD14oW6_5fLawSs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/api/v1/employee/get/email/harsh@dev.in"
+					},
+					"response": []
+				},
+				{
+					"name": "GRANT PERMISSION",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhamF5QGRldi5pbiIsImV4cCI6MTY4NjYzNjg2MCwiaWF0IjoxNjg2NjM2MjYwfQ.tMiZUZNBRxyMcKcLH0JHNT3q198QG9UqK9G1CpVtUNw"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roleId\": 2,\r\n    \"permissions\":[3]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/api/v1/permission/grant/employee/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AUTH SERVICE",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0ZWVrQGRldi5pbiIsImV4cCI6MTY4NDc4Mzc3MSwiaWF0IjoxNjg0NzQ3NzcxfQ.HTFYo-A_FMuPloznLMos0zWoS-YuLTifk9HbaU-Pnks"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"harsh@dev.in\",\r\n    \"password\":\"jay\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8082/api/v1/authenticate/signin"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PROVIDED SERVICES",
+			"item": [
+				{
+					"name": "GET ALL SERVICES",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYmhpc2hla0BkZXYuaW4iLCJleHAiOjE2ODY2NDE2MDAsImlhdCI6MTY4NjY0MTAwMH0.NdDUioNi-RY3hnW5DlSBBafBAVb3ICJSrPhV0SICmLg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8083/api/v1/services/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE SERVICE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0ZWVrQGRldi5pbiIsImV4cCI6MTY4NDkxMTExMiwiaWF0IjoxNjg0OTEwNTEyfQ.348M5xRyAi2-sviH6GQKuYAlF15Eh4y2x0BST_IQMaA"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"service\":\"Hair-Color\",\r\n    \"employeeIds\":[2]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8083/api/v1/services/create"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE SERVICES",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYWlsZXNoQGRldi5pbiIsImV4cCI6MTY4NDc4NDQxNSwiaWF0IjoxNjg0NzQ4NDE1fQ.R7A7uWN4efdZfGll-bseIxfzA_MbjiZYSheY7HV4AqQ"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"service\": \"HairCut\",\r\n            \"customers\": [],\r\n            \"employee\": []\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8083/api/v1/services/update/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE SERVICES",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0ZWVrQGRldi5pbiIsImV4cCI6MTY4NDc5NjkzOCwiaWF0IjoxNjg0NzYwOTM4fQ.EaxsglpDXG4YRdfAoC8Diu6_tnuQ1Asq29gEnaD2P-M"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8083/api/v1/services/delete/6"
+					},
+					"response": []
+				},
+				{
+					"name": "GET SERVICE BY NAME",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0ZWVrQGRldi5pbiIsImV4cCI6MTY4NDkxMTExMiwiaWF0IjoxNjg0OTEwNTEyfQ.348M5xRyAi2-sviH6GQKuYAlF15Eh4y2x0BST_IQMaA"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8083/api/v1/services/get-all/by-name/h"
+					},
+					"response": []
+				},
+				{
+					"name": "GET SERVICE BY ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0ZWVrQGRldi5pbiIsImV4cCI6MTY4NDkxMDQyMiwiaWF0IjoxNjg0OTA5ODIyfQ.KxjmsWlkgV5BpP3QhQwXPQd4UkNGTs73dhISB0TvUvQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8083/api/v1/services/get/1"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL SERVICES BY EMPLOYEE ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0ZWVrQGRldi5pbiIsImV4cCI6MTY4NDkxMTc4MywiaWF0IjoxNjg0OTExMTgzfQ.R5dL_yRh80pIauYXyNnYg1gSgsziyDv6NN-TuKwwN_o"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8083/api/v1/services/get-all/by-employee/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CUSTOMER-SERVICE",
+			"item": [
+				{
+					"name": "SAVE CUSTOMER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerName\":\"Kali verma\",\r\n    \"mobileNumber\":\"9987654321\",\r\n    \"email\":\"kali@gmail.com\",\r\n    \"dateOfAppointment\":\"2023-05-25\",\r\n    \"employee\":\"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8084/api/v1/customer/save"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL CUSTOMERS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8084/api/v1/customer/get-all"
+					},
+					"response": []
+				},
+				{
+					"name": "GET CUSTOMER BY ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8084/api/v1/customer/get/id/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PAYMENT-SERVICE",
+			"item": [
+				{
+					"name": "CREATE-ORDER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 60,\r\n    \"currency\":\"INR\",\r\n    \"userEmail\":\"prateek@dev.in\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8085/api/v1/payment/create-order"
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE ORDER ON SERVER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"payment_id\":\"kahjxsj\",\r\n    \"order_id\":\"order_LuBRnWfOvqdCj3\",\r\n    \"status\":\"paid\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8085/api/v1/payment/update-order"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
